@@ -75,6 +75,10 @@ body{
   overflow-x:hidden;
 }
 a{color:inherit;text-decoration:none}
+a.lk{color:var(--purple-deep);font-weight:700;text-decoration:underline;text-decoration-color:rgba(108,43,155,.35);text-underline-offset:3px;transition:color .15s,text-decoration-color .15s}
+a.lk:hover{color:var(--purple);text-decoration-color:var(--purple)}
+a.lk-light{color:#fff;font-weight:700;text-decoration:underline;text-decoration-color:rgba(255,255,255,.5);text-underline-offset:3px;transition:color .15s,text-decoration-color .15s}
+a.lk-light:hover{color:var(--gold);text-decoration-color:var(--gold)}
 img,svg{display:block;max-width:100%}
 .container{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
 
@@ -164,7 +168,7 @@ header.nav{
   content:"";position:absolute;right:-30%;bottom:-40%;width:90%;height:90%;
   background:radial-gradient(circle, rgba(255,209,64,.5), transparent 60%);
 }
-.hv-main .emblem{position:absolute;top:26px;left:26px;width:46px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.25))}
+.hv-main .emblem{position:absolute;top:22px;left:22px;width:30px;height:30px;padding:8px;background:#fff;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.2)}
 .hv-main .hv-label{position:absolute;top:30px;right:28px;color:rgba(255,255,255,.85);font-weight:700;letter-spacing:.12em;font-size:.72rem;text-transform:uppercase}
 .cal{position:absolute;left:30px;right:30px;bottom:30px;background:rgba(255,255,255,.97);border-radius:16px;padding:16px;box-shadow:0 16px 40px rgba(0,0,0,.18)}
 .cal-row{display:flex;align-items:center;gap:12px;padding:9px 8px;border-radius:10px}
@@ -209,7 +213,9 @@ section{scroll-margin-top:90px}
 }
 .story-card::after{content:"";position:absolute;right:-20%;top:-30%;width:70%;height:70%;background:radial-gradient(circle,rgba(255,209,64,.45),transparent 60%)}
 .story-card .q{font-size:1.5rem;font-weight:800;line-height:1.3;letter-spacing:-.02em;position:relative}
-.story-card .by{margin-top:22px;font-weight:600;opacity:.92;font-size:.95rem;position:relative}
+.story-card .by{margin-top:18px;font-weight:500;opacity:.95;font-size:1rem;line-height:1.5;position:relative}
+.story-card .sc-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;position:relative}
+.story-card .sc-eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold)}
 .story-text h2{margin-bottom:20px}
 .story-text p+p{margin-top:16px}
 
@@ -344,7 +350,9 @@ footer .f-tag{max-width:320px;font-size:.95rem;color:#a7a8b8}
 /* ===================== RESPONSIVE ===================== */
 @media (max-width:980px){
   .hero-grid,.story-grid,.integ,.cta-grid{grid-template-columns:1fr;gap:40px}
-  .hero-visual{min-height:360px;margin-top:10px}
+  .hero-visual{min-height:380px;max-width:560px;margin:10px auto 0}
+  .float-msg{right:0}
+  .float-stat{left:0}
   .feat-grid{grid-template-columns:repeat(2,1fr)}
   .stats{grid-template-columns:repeat(2,1fr);gap:34px}
   .story-card{order:-1}
@@ -364,6 +372,9 @@ footer .f-tag{max-width:320px;font-size:.95rem;color:#a7a8b8}
   .feat-grid{grid-template-columns:1fr}
   .form-card{padding:26px}
   .story-card{padding:32px}
+  .hero-visual{min-height:300px;max-width:430px}
+  .float-msg,.float-stat{display:none}
+  .hero{padding:56px 0 64px}
 }
 </style>
 </head>
@@ -399,7 +410,7 @@ footer .f-tag{max-width:320px;font-size:.95rem;color:#a7a8b8}
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <span class="eyebrow"><span class="dot"></span>Built with Circles of Hair</span>
+      <span class="eyebrow"><span class="dot"></span>Built with <a class="lk" href="https://circlesofhair.com.au" target="_blank" rel="noopener" style="color:inherit">Circles of Hair</a></span>
       <h1>Empower your salon.<br><span class="grad">Embrace the future.</span></h1>
       <p class="lead">Maruflow is the all-in-one booking and growth platform built for busy, high-volume salons — by people who actually run one. Less admin, more artistry.</p>
       <div class="hero-actions">
@@ -439,9 +450,9 @@ footer .f-tag{max-width:320px;font-size:.95rem;color:#a7a8b8}
 <!-- PARTNER STRIP -->
 <div class="partner">
   <div class="container partner-inner">
-    <img class="partner-logo" src="https://circlesofhair.com.au/wp-content/uploads/2023/03/Circles_Logo_Pink_Circles_2.png" alt="Circles of Hair" loading="lazy" onerror="this.style.display='none'" />
+    <a href="https://circlesofhair.com.au" target="_blank" rel="noopener" aria-label="Visit Circles of Hair"><img class="partner-logo" src="https://circlesofhair.com.au/wp-content/uploads/2023/03/Circles_Logo_Pink_Circles_2.png" alt="Circles of Hair" loading="lazy" onerror="this.style.display='none'" /></a>
     <span class="partner-divider" aria-hidden="true"></span>
-    <p>Created in partnership with <strong>Circles of Hair</strong> — one of Australia's most awarded salon brands. Born on the salon floor, not in a boardroom.</p>
+    <p>Created in partnership with <a class="lk" href="https://circlesofhair.com.au" target="_blank" rel="noopener">Circles of Hair</a> — one of Australia's busiest, most awarded salon groups. Born on the salon floor, not in a boardroom.</p>
   </div>
 </div>
 
@@ -451,13 +462,14 @@ footer .f-tag{max-width:320px;font-size:.95rem;color:#a7a8b8}
     <div class="story-text reveal">
       <span class="eyebrow"><span class="dot"></span>Why we built Maruflow</span>
       <h2 style="margin-top:16px">We couldn't find software that kept up with us. So we built it.</h2>
-      <p>Maruflow was created in conjunction with <strong style="color:var(--purple-deep)">Circles of Hair</strong>, one of Australia's leading salon brands. After years of running a genuinely busy, high-volume salon, we kept hitting the same wall: every booking system on the market did the basics, but none of them connected the dots between the chair, the client, and real business growth.</p>
+      <p>Maruflow was created in conjunction with <a class="lk" href="https://circlesofhair.com.au" target="_blank" rel="noopener">Circles of Hair</a>, one of Australia's busiest, most awarded salon groups. After years of running a genuinely busy, high-volume salon, we kept hitting the same wall: every booking system on the market did the basics, but none of them connected the dots between the chair, the client, and real business growth.</p>
       <p>So we built the platform we always wished existed — one that handles everything a busy salon needs day-to-day, then goes further by integrating deeply with the tools that actually grow a business. Maruflow is technology that feels like a joyful partner in craft, not a cold, intimidating system. It's the modern artist's accomplice.</p>
       <p>This is salon software designed by salon people, for salon people who refuse to settle.</p>
     </div>
     <div class="story-card reveal">
-      <div class="q">"Empower your salon, embrace the future."</div>
-      <div class="by">— The Maruflow vision, forged with Circles of Hair</div>
+      <span class="sc-eyebrow">Stress-tested where it counts</span>
+      <div class="q">If it can keep up with Circles of Hair, it's ready for you.</div>
+      <div class="by">Maruflow is fine-tuned every single day inside <a class="lk-light" href="https://circlesofhair.com.au" target="_blank" rel="noopener">Circles of Hair</a> — one of the busiest, most awarded salon groups in Australia. It's battle-tested in the real world, so what you get is a platform that's proven, polished and ready to take advantage of from day one.</div>
     </div>
   </div>
 </section>
@@ -512,7 +524,7 @@ footer .f-tag{max-width:320px;font-size:.95rem;color:#a7a8b8}
         <div class="fw-text">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
           <h3>Advanced reports &amp; revenue forecasting</h3>
-          <p>Developed hand-in-hand with Circles of Hair, Maruflow's advanced reporting keeps you on top of your numbers in real time — and turns them into accurate forecasts of your future revenue, so you can plan with confidence instead of guesswork.</p>
+          <p>Developed hand-in-hand with <a class="lk" href="https://circlesofhair.com.au" target="_blank" rel="noopener">Circles of Hair</a>, Maruflow's advanced reporting keeps you on top of your numbers in real time — and turns them into accurate forecasts of your future revenue, so you can plan with confidence instead of guesswork.</p>
           <span class="fw-badge"><span class="dot"></span>Co-developed with Circles of Hair</span>
         </div>
         <div class="fw-viz" aria-hidden="true">
@@ -663,7 +675,7 @@ footer .f-tag{max-width:320px;font-size:.95rem;color:#a7a8b8}
     </div>
     <div class="faq">
       <details class="reveal"><summary>What is Maruflow? <span class="pm">+</span></summary><p>Maruflow is an all-in-one salon booking and growth platform: bookings, online booking, automated reminders, two-way messaging, advanced booking rules, an automated reviews &amp; reputation engine, and advanced reports with revenue forecasting — plus deep HubSpot and Zapier integration for true end-to-end client journey tracking and marketing.</p></details>
-      <details class="reveal"><summary>Who is behind Maruflow? <span class="pm">+</span></summary><p>Maruflow was created in conjunction with Circles of Hair, one of Australia's leading salon brands. It was built to solve real problems we faced running a busy, high-volume salon — when no existing system could meet our needs.</p></details>
+      <details class="reveal"><summary>Who is behind Maruflow? <span class="pm">+</span></summary><p>Maruflow was created in conjunction with <a class="lk" href="https://circlesofhair.com.au" target="_blank" rel="noopener">Circles of Hair</a>, one of Australia's busiest, most awarded salon groups. It was built to solve real problems we faced running a busy, high-volume salon — when no existing system could meet our needs, then fine-tuned and stress-tested in that environment so it's ready for yours.</p></details>
       <details class="reveal"><summary>Can I buy Maruflow now? <span class="pm">+</span></summary><p>Not yet — Maruflow is currently in private early access and isn't open for public purchase. Join the early-access list and we'll reach out as soon as a spot opens for your salon.</p></details>
       <details class="reveal"><summary>How deep is the HubSpot integration? <span class="pm">+</span></summary><p>Very. Maruflow connects bookings and client activity directly to HubSpot so you get accurate end-to-end journey tracking, and can market at key moments with both automations and manual interventions. Zapier support extends this to 6,000+ other apps.</p></details>
     </div>
@@ -676,7 +688,7 @@ footer .f-tag{max-width:320px;font-size:.95rem;color:#a7a8b8}
     <div class="foot-grid">
       <div class="f-brand">
         <div class="f-logo"><img src="maruflow-lockup-a.svg" alt="Maruflow" /></div>
-        <p class="f-tag">Empower your salon, embrace the future. Salon software built by salon people — in partnership with Circles of Hair.</p>
+        <p class="f-tag">Empower your salon, embrace the future. Salon software built by salon people — in partnership with <a class="lk-light" href="https://circlesofhair.com.au" target="_blank" rel="noopener">Circles of Hair</a>.</p>
       </div>
       <div class="f-links">
         <div class="f-col">
