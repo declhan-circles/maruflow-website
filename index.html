@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maruflow — Salon Booking &amp; Growth Software | Empower Your Salon</title>
+<meta name="description" content="Maruflow is the all-in-one salon booking and growth platform built in partnership with Circles of Hair, Australia's leading salon brand. Bookings, reminders, two-way messaging, reviews, reputation and deep HubSpot &amp; Zapier integration. Join the early access list." />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Maruflow — Empower Your Salon, Embrace the Future" />
+<meta property="og:description" content="The salon booking and growth platform built by salon people. Bookings, reminders, two-way messaging, reviews, reputation and deep HubSpot &amp; Zapier integration. Get early access." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="maruflow-lockup-b@4x.png" />
+
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+
+<!-- Manrope (brand primary typeface) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<style>
+/* =====================================================================
+   MARUFLOW BRAND TOKENS  — from official brand guideline v1.0
+   Edit these values to re-skin the whole site.
+   ===================================================================== */
+:root{
+  /* Primary colours */
+  --purple:      #B14EF1;   /* Primary 02 — vibrant purple */
+  --purple-deep: #6C2B9B;   /* Primary 03 — deep purple    */
+  --gold:        #FFD140;   /* Primary 04 — gold           */
+  --lavender:    #FEF6FF;   /* Primary 01 — near-white      */
+
+  /* Greyscale (brand) */
+  --cloud:    #EDEFF7;
+  --smoke:    #D3D6E0;
+  --steel:    #BCBFCC;
+  --space:    #9DA2B3;
+  --graphite: #6E7180;
+  --arsenic:  #40424D;
+  --phantom:  #1E1E24;      /* near-black text / dark bg */
+  --black:    #000000;
+
+  /* Semantic */
+  --ink:        var(--phantom);
+  --muted:      var(--graphite);
+  --bg:         #ffffff;
+  --bg-tint:    var(--lavender);
+  --line:       #ece8f3;
+  --accent:     var(--purple);
+  --accent-2:   var(--gold);
+
+  --grad: linear-gradient(135deg, var(--purple) 0%, var(--purple-deep) 100%);
+  --grad-soft: linear-gradient(160deg, #faf2ff 0%, #f3ecff 100%);
+
+  --radius: 18px;
+  --radius-lg: 28px;
+  --shadow-sm: 0 2px 10px rgba(30,30,36,.06);
+  --shadow: 0 18px 50px rgba(108,43,155,.14);
+  --shadow-lg: 0 30px 80px rgba(108,43,155,.22);
+  --maxw: 1180px;
+  --font: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.container{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+h1,h2,h3,h4{line-height:1.12;letter-spacing:-.02em;font-weight:800;color:var(--ink)}
+h1{font-size:clamp(2.4rem,5.4vw,4.2rem)}
+h2{font-size:clamp(1.9rem,3.6vw,2.9rem)}
+h3{font-size:1.18rem;font-weight:700;letter-spacing:-.01em}
+p{color:var(--muted);font-size:1.04rem}
+.lead{font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--arsenic)}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--purple-deep);
+  background:#f4ecff;border:1px solid #e7d8fb;
+  padding:7px 14px;border-radius:999px;
+}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--purple);box-shadow:0 0 0 4px rgba(177,78,241,.18)}
+
+/* ---- Buttons ---- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--font);font-weight:700;font-size:1rem;
+  padding:15px 28px;border-radius:999px;border:1.5px solid transparent;
+  cursor:pointer;transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+  white-space:nowrap;
+}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 12px 30px rgba(177,78,241,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 42px rgba(177,78,241,.45)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--smoke)}
+.btn-ghost:hover{border-color:var(--purple);color:var(--purple-deep);transform:translateY(-2px)}
+.btn-gold{background:var(--gold);color:var(--phantom);box-shadow:0 12px 30px rgba(255,209,64,.4)}
+.btn-gold:hover{transform:translateY(-2px)}
+.btn-lg{padding:17px 34px;font-size:1.05rem}
+
+/* ===================== NAV ===================== */
+.topbar{
+  background:var(--grad);color:#fff;text-align:center;
+  font-size:.86rem;font-weight:600;letter-spacing:.01em;padding:9px 16px;
+}
+.topbar span{opacity:.95}
+.topbar a{text-decoration:underline;text-underline-offset:3px;font-weight:700}
+
+header.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.82);backdrop-filter:saturate(160%) blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo img{height:30px;width:auto}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a.link{font-weight:600;font-size:.97rem;color:var(--arsenic);transition:color .15s}
+.nav-links a.link:hover{color:var(--purple-deep)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:6px}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;border-radius:2px;transition:.3s}
+
+/* ===================== HERO ===================== */
+.hero{position:relative;padding:78px 0 90px;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background:
+    radial-gradient(60% 60% at 85% 10%, rgba(255,209,64,.16), transparent 60%),
+    radial-gradient(70% 70% at 10% 0%, rgba(177,78,241,.16), transparent 55%),
+    var(--bg);
+}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{margin:18px 0 18px}
+.hero h1 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p.lead{max-width:540px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.hero-meta{display:flex;align-items:center;gap:22px;margin-top:30px;flex-wrap:wrap}
+.hero-meta .item{display:flex;align-items:center;gap:9px;font-size:.9rem;font-weight:600;color:var(--arsenic)}
+.hero-meta svg{width:18px;height:18px;color:var(--purple)}
+
+/* Hero visual */
+.hero-visual{position:relative;min-height:430px}
+.glass-card{
+  position:absolute;background:#fff;border:1px solid var(--line);
+  border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;
+}
+.hv-main{
+  inset:0;position:absolute;border-radius:var(--radius-lg);
+  background:var(--grad);box-shadow:var(--shadow-lg);overflow:hidden;
+}
+.hv-main::after{
+  content:"";position:absolute;right:-30%;bottom:-40%;width:90%;height:90%;
+  background:radial-gradient(circle, rgba(255,209,64,.5), transparent 60%);
+}
+.hv-main .emblem{position:absolute;top:26px;left:26px;width:46px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.25))}
+.hv-main .hv-label{position:absolute;top:30px;right:28px;color:rgba(255,255,255,.85);font-weight:700;letter-spacing:.12em;font-size:.72rem;text-transform:uppercase}
+.cal{position:absolute;left:30px;right:30px;bottom:30px;background:rgba(255,255,255,.97);border-radius:16px;padding:16px;box-shadow:0 16px 40px rgba(0,0,0,.18)}
+.cal-row{display:flex;align-items:center;gap:12px;padding:9px 8px;border-radius:10px}
+.cal-row+ .cal-row{margin-top:4px}
+.cal-row .time{font-size:.78rem;font-weight:700;color:var(--space);width:52px}
+.cal-row .pill{flex:1;height:30px;border-radius:8px;display:flex;align-items:center;padding:0 12px;font-size:.8rem;font-weight:700;color:#fff}
+.pill.p1{background:var(--purple)}
+.pill.p2{background:var(--purple-deep)}
+.pill.p3{background:var(--gold);color:var(--phantom)}
+.float-msg{top:18px;right:-6px;width:215px}
+.float-msg .h{display:flex;align-items:center;gap:9px;font-weight:700;font-size:.82rem;color:var(--ink)}
+.float-msg .h .av{width:26px;height:26px;border-radius:50%;background:var(--grad)}
+.float-msg .b{font-size:.78rem;color:var(--muted);margin-top:6px}
+.float-msg .tag{display:inline-block;margin-top:9px;font-size:.66rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--purple-deep);background:#f3e9ff;padding:3px 8px;border-radius:6px}
+.float-stat{bottom:8px;left:-10px;width:180px}
+.float-stat .n{font-size:1.7rem;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.float-stat .n span{color:var(--purple)}
+.float-stat .l{font-size:.76rem;font-weight:600;color:var(--muted)}
+
+/* ===================== LOGOS / TRUST ===================== */
+.partner{padding:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-tint)}
+.partner-inner{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;text-align:center}
+.partner-inner p{font-size:.95rem;color:var(--arsenic);font-weight:600;margin:0;text-align:left}
+.partner-inner strong{color:var(--purple-deep)}
+.partner-logo{height:46px;width:auto;flex:none}
+.partner-divider{width:1px;height:38px;background:var(--smoke)}
+@media(max-width:760px){.partner-logo{height:38px}.partner-divider{display:none}.partner-inner p{text-align:center}}
+
+/* ===================== SECTIONS ===================== */
+section{scroll-margin-top:90px}
+.section{padding:96px 0}
+.section.tint{background:var(--bg-tint)}
+.sec-head{max-width:720px;margin:0 auto 56px;text-align:center}
+.sec-head .eyebrow{margin-bottom:16px}
+.sec-head p{margin-top:16px;font-size:1.1rem}
+
+/* Story */
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.story-card{
+  background:var(--grad);color:#fff;border-radius:var(--radius-lg);
+  padding:44px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden;
+}
+.story-card::after{content:"";position:absolute;right:-20%;top:-30%;width:70%;height:70%;background:radial-gradient(circle,rgba(255,209,64,.45),transparent 60%)}
+.story-card .q{font-size:1.5rem;font-weight:800;line-height:1.3;letter-spacing:-.02em;position:relative}
+.story-card .by{margin-top:22px;font-weight:600;opacity:.92;font-size:.95rem;position:relative}
+.story-text h2{margin-bottom:20px}
+.story-text p+p{margin-top:16px}
+
+/* Features */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.feat{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px;transition:transform .2s ease, box-shadow .2s ease, border-color .2s;
+}
+.feat:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#e6d7fb}
+.feat .ico{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:#f4ecff;margin-bottom:18px}
+.feat .ico svg{width:26px;height:26px;color:var(--purple-deep)}
+.feat.gold .ico{background:#fff6dc}
+.feat.gold .ico svg{color:#a9791a}
+.feat h3{margin-bottom:8px}
+.feat p{font-size:.96rem}
+/* Wide spotlight feature */
+.feat-wide{grid-column:1 / -1;display:grid;grid-template-columns:1.25fr 1fr;gap:38px;align-items:center;background:var(--grad-soft);border-color:#e6d7fb}
+.feat-wide:hover{transform:none;box-shadow:var(--shadow)}
+.feat-wide h3{font-size:1.5rem}
+.feat-wide p{font-size:1rem;max-width:520px}
+.fw-badge{display:inline-flex;align-items:center;gap:7px;margin-top:16px;font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--purple-deep);background:#fff;border:1px solid #e7d8fb;padding:7px 13px;border-radius:999px}
+.fw-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--purple)}
+.fw-viz{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 18px 12px;box-shadow:var(--shadow-sm)}
+.fw-viz .cap{display:flex;justify-content:space-between;align-items:center;font-size:.72rem;font-weight:700;color:var(--muted);margin-top:10px}
+.fw-viz .cap b{color:var(--purple-deep)}
+.fw-legend{display:flex;gap:16px;font-size:.7rem;font-weight:700;color:var(--graphite)}
+.fw-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:middle}
+@media(max-width:760px){.feat-wide{grid-template-columns:1fr;gap:26px}}
+
+/* Integrations */
+.integ{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.integ-card{
+  border-radius:var(--radius-lg);padding:42px;position:relative;overflow:hidden;
+  border:1px solid var(--line);background:#fff;box-shadow:var(--shadow-sm);
+}
+.integ-card.dark{background:var(--phantom);color:#fff;border-color:transparent}
+.integ-card.dark h3,.integ-card.dark h2{color:#fff}
+.integ-card.dark p{color:#bfc0cf}
+.integ-card .tag{display:inline-flex;align-items:center;gap:8px;font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--purple);margin-bottom:18px}
+.integ-card.dark .tag{color:var(--gold)}
+.integ-card h3{font-size:1.5rem;font-weight:800;margin-bottom:14px}
+.brand-chip{display:inline-flex;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 18px;margin-bottom:14px;box-shadow:var(--shadow-sm)}
+.brand-chip img{height:28px;width:auto;display:block}
+.brand-chip svg.logo-svg{height:24px;width:auto;display:block}
+.zap-chip{gap:9px}
+.zap-bar{width:22px;height:7px;border-radius:4px;background:#FF4A00;align-self:flex-end;margin-bottom:6px}
+.zap-word{font-family:var(--font);font-weight:800;font-size:1.45rem;line-height:1;letter-spacing:-.035em;color:#201515}
+.integ-list{margin-top:22px;display:grid;gap:14px}
+.integ-list .row{display:flex;gap:12px;align-items:flex-start;font-size:.96rem;color:var(--arsenic)}
+.integ-card.dark .integ-list .row{color:#cfd0de}
+.integ-list .row svg{width:20px;height:20px;flex:none;margin-top:2px;color:var(--purple)}
+.integ-card.dark .integ-list .row svg{color:var(--gold)}
+.journey{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:26px}
+.journey .step{font-size:.78rem;font-weight:700;padding:8px 13px;border-radius:999px;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.16)}
+.journey .arr{color:var(--gold);font-weight:800}
+
+/* Stats band */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat .n{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-.02em;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat .l{font-size:.92rem;font-weight:600;color:var(--muted);margin-top:4px}
+
+/* ===================== FORM ===================== */
+.cta-wrap{position:relative;overflow:hidden;background:var(--phantom)}
+.cta-wrap::before{content:"";position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(50% 60% at 12% 0%, rgba(177,78,241,.45), transparent 60%),
+    radial-gradient(45% 55% at 95% 100%, rgba(255,209,64,.22), transparent 60%);
+}
+.cta-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.cta-copy .eyebrow{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:#fff}
+.cta-copy .eyebrow .dot{background:var(--gold);box-shadow:0 0 0 4px rgba(255,209,64,.25)}
+.cta-copy h2{color:#fff;margin:18px 0 16px}
+.cta-copy p{color:#c9cad6;font-size:1.08rem;max-width:460px}
+.cta-copy .perks{margin-top:26px;display:grid;gap:13px}
+.cta-copy .perks .row{display:flex;gap:11px;align-items:center;color:#e7e7ee;font-weight:600;font-size:.96rem}
+.cta-copy .perks svg{width:20px;height:20px;color:var(--gold);flex:none}
+
+.form-card{background:#fff;border-radius:var(--radius-lg);padding:36px;box-shadow:var(--shadow-lg)}
+.form-card h3{font-size:1.35rem;margin-bottom:6px}
+.form-card .sub{font-size:.92rem;color:var(--muted);margin-bottom:24px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.82rem;font-weight:700;color:var(--arsenic);margin-bottom:7px}
+.field label .req{color:var(--purple)}
+.field input{
+  width:100%;font-family:var(--font);font-size:1rem;color:var(--ink);
+  padding:13px 15px;border:1.5px solid var(--smoke);border-radius:12px;
+  background:#fff;transition:border-color .15s, box-shadow .15s;
+}
+.field input::placeholder{color:var(--space)}
+.field input:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 4px rgba(177,78,241,.14)}
+.field input.invalid{border-color:#e0506b;box-shadow:0 0 0 4px rgba(224,80,107,.12)}
+.field .err{display:none;font-size:.78rem;color:#d63a57;font-weight:600;margin-top:6px}
+.field.show-err .err{display:block}
+.form-card button[type=submit]{width:100%;margin-top:6px}
+.form-note{font-size:.78rem;color:var(--space);text-align:center;margin-top:14px}
+.form-success{display:none;text-align:center;padding:24px 8px}
+.form-success.show{display:block;animation:pop .4s ease}
+@keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+.form-success .check{width:66px;height:66px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.form-success .check svg{width:32px;height:32px;color:#fff}
+.form-success h3{font-size:1.4rem;margin-bottom:8px}
+.form-success p{font-size:.96rem}
+.form-error-banner{display:none;background:#fdecef;border:1px solid #f5c2cd;color:#b02a44;font-size:.86rem;font-weight:600;padding:11px 14px;border-radius:10px;margin-bottom:16px}
+.form-error-banner.show{display:block}
+
+/* ===================== FAQ ===================== */
+.faq{max-width:780px;margin:0 auto}
+.faq details{border:1px solid var(--line);border-radius:14px;padding:4px 22px;margin-bottom:14px;background:#fff;transition:box-shadow .2s}
+.faq details[open]{box-shadow:var(--shadow-sm)}
+.faq summary{list-style:none;cursor:pointer;font-weight:700;font-size:1.05rem;padding:18px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .pm{font-size:1.5rem;color:var(--purple);font-weight:400;line-height:1;transition:transform .2s}
+.faq details[open] summary .pm{transform:rotate(45deg)}
+.faq p{padding:0 0 20px;font-size:.98rem}
+
+/* ===================== FOOTER ===================== */
+footer{background:var(--phantom);color:#cfd0de;padding:64px 0 34px}
+.foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start}
+footer .f-logo img{height:30px;margin-bottom:16px}
+footer .f-tag{max-width:320px;font-size:.95rem;color:#a7a8b8}
+.f-links{display:flex;gap:60px;flex-wrap:wrap}
+.f-col h4{color:#fff;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;font-weight:700}
+.f-col a{display:block;color:#a7a8b8;font-size:.94rem;margin-bottom:10px;transition:color .15s}
+.f-col a:hover{color:var(--gold)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:48px;padding-top:24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.85rem;color:#7d7e8e}
+
+/* ===================== REVEAL ===================== */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width:980px){
+  .hero-grid,.story-grid,.integ,.cta-grid{grid-template-columns:1fr;gap:40px}
+  .hero-visual{min-height:360px;margin-top:10px}
+  .feat-grid{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr);gap:34px}
+  .story-card{order:-1}
+}
+@media (max-width:760px){
+  .nav-links{
+    position:absolute;top:72px;left:0;right:0;background:#fff;flex-direction:column;
+    align-items:flex-start;gap:0;padding:8px 24px 20px;border-bottom:1px solid var(--line);
+    box-shadow:var(--shadow);display:none;
+  }
+  .nav-links.open{display:flex}
+  .nav-links a.link{padding:14px 0;width:100%;border-bottom:1px solid var(--line)}
+  .nav-links .btn{margin-top:14px;width:100%}
+  .nav-toggle{display:block}
+  .nav-cta .btn:not(.nav-toggle){display:none}
+  .section{padding:68px 0}
+  .feat-grid{grid-template-columns:1fr}
+  .form-card{padding:26px}
+  .story-card{padding:32px}
+}
+</style>
+</head>
+<body>
+
+<!-- Announcement -->
+<div class="topbar">
+  <span>🚀 Maruflow is in private early access — <a href="#early-access">request your invite</a> before public launch.</span>
+</div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="nav-logo" aria-label="Maruflow home">
+      <img src="maruflow-lockup-b.svg" alt="Maruflow" />
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a class="link" href="#features">Features</a>
+      <a class="link" href="#why">Why Maruflow</a>
+      <a class="link" href="#integrations">Integrations</a>
+      <a class="link" href="#faq">FAQ</a>
+      <a class="btn btn-primary" href="#early-access">Get early access</a>
+    </nav>
+    <div class="nav-cta">
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="dot"></span>Built with Circles of Hair</span>
+      <h1>Empower your salon.<br><span class="grad">Embrace the future.</span></h1>
+      <p class="lead">Maruflow is the all-in-one booking and growth platform built for busy, high-volume salons — by people who actually run one. Less admin, more artistry.</p>
+      <div class="hero-actions">
+        <a href="#early-access" class="btn btn-primary btn-lg">Request early access</a>
+        <a href="#features" class="btn btn-ghost btn-lg">Explore features</a>
+      </div>
+      <div class="hero-meta">
+        <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Built for high-volume salons</div>
+        <div class="item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Deep HubSpot &amp; Zapier integration</div>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hv-main">
+        <img class="emblem" src="maruflow-emblem.svg" alt="" />
+        <div class="hv-label">Today · Bookings</div>
+        <div class="cal">
+          <div class="cal-row"><div class="time">9:00</div><div class="pill p1">Balayage · Mia</div></div>
+          <div class="cal-row"><div class="time">10:30</div><div class="pill p2">Cut &amp; Style · Jack</div></div>
+          <div class="cal-row"><div class="time">12:00</div><div class="pill p3">Colour · Priya</div></div>
+          <div class="cal-row"><div class="time">1:30</div><div class="pill p1">Treatment · Sam</div></div>
+        </div>
+      </div>
+      <div class="glass-card float-msg">
+        <div class="h"><span class="av"></span> Two-way SMS</div>
+        <div class="b">"Hi Mia! Reminder for your appt tomorrow at 9am 💜 Reply Y to confirm."</div>
+        <span class="tag">Auto-reminder sent</span>
+      </div>
+      <div class="glass-card float-stat">
+        <div class="n">+<span>38%</span></div>
+        <div class="l">rebookings from automated follow-ups</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER STRIP -->
+<div class="partner">
+  <div class="container partner-inner">
+    <img class="partner-logo" src="https://circlesofhair.com.au/wp-content/uploads/2023/03/Circles_Logo_Pink_Circles_2.png" alt="Circles of Hair" loading="lazy" onerror="this.style.display='none'" />
+    <span class="partner-divider" aria-hidden="true"></span>
+    <p>Created in partnership with <strong>Circles of Hair</strong> — one of Australia's most awarded salon brands. Born on the salon floor, not in a boardroom.</p>
+  </div>
+</div>
+
+<!-- WHY / STORY -->
+<section id="why" class="section">
+  <div class="container story-grid">
+    <div class="story-text reveal">
+      <span class="eyebrow"><span class="dot"></span>Why we built Maruflow</span>
+      <h2 style="margin-top:16px">We couldn't find software that kept up with us. So we built it.</h2>
+      <p>Maruflow was created in conjunction with <strong style="color:var(--purple-deep)">Circles of Hair</strong>, one of Australia's leading salon brands. After years of running a genuinely busy, high-volume salon, we kept hitting the same wall: every booking system on the market did the basics, but none of them connected the dots between the chair, the client, and real business growth.</p>
+      <p>So we built the platform we always wished existed — one that handles everything a busy salon needs day-to-day, then goes further by integrating deeply with the tools that actually grow a business. Maruflow is technology that feels like a joyful partner in craft, not a cold, intimidating system. It's the modern artist's accomplice.</p>
+      <p>This is salon software designed by salon people, for salon people who refuse to settle.</p>
+    </div>
+    <div class="story-card reveal">
+      <div class="q">"Empower your salon, embrace the future."</div>
+      <div class="by">— The Maruflow vision, forged with Circles of Hair</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="section tint">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>Everything a busy salon needs</span>
+      <h2>All the essentials — done beautifully</h2>
+      <p>Maruflow covers the full day-to-day of a high-volume salon, then keeps going where other systems stop.</p>
+    </div>
+    <div class="feat-grid">
+
+      <div class="feat reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <h3>Smart bookings</h3>
+        <p>A fast, flexible calendar built for multi-stylist, multi-service salons — manage your whole team's day at a glance.</p>
+      </div>
+
+      <div class="feat reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg></div>
+        <h3>Online booking 24/7</h3>
+        <p>Let clients book themselves anytime, from anywhere. A seamless booking experience that fills your chairs while you sleep.</p>
+      </div>
+
+      <div class="feat reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div>
+        <h3>Automated reminders</h3>
+        <p>Cut no-shows with smart SMS and email reminders that go out automatically — and bring clients back at exactly the right time.</p>
+      </div>
+
+      <div class="feat reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Two-way messaging</h3>
+        <p>Real conversations, not one-way blasts. Clients reply, confirm and chat — all threaded neatly in one place for your team.</p>
+      </div>
+
+      <div class="feat reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M3 20h2M3 4h18M5 4v16M19 4v16M9 8h6M9 12h6"/></svg></div>
+        <h3>Advanced booking rules</h3>
+        <p>Deposits, multi-service chains, processing time, recurring appointments and stylist-level availability — handled with ease.</p>
+      </div>
+
+      <div class="feat gold reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 15 9l7 .5-5.5 4.5L18 21l-6-3.8L6 21l1.5-7L2 9.5 9 9z"/></svg></div>
+        <h3>Reviews &amp; reputation</h3>
+        <p>An automated review-building engine plus full reputation management — turn happy clients into a stream of 5-star reviews.</p>
+      </div>
+
+      <div class="feat feat-wide reveal">
+        <div class="fw-text">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
+          <h3>Advanced reports &amp; revenue forecasting</h3>
+          <p>Developed hand-in-hand with Circles of Hair, Maruflow's advanced reporting keeps you on top of your numbers in real time — and turns them into accurate forecasts of your future revenue, so you can plan with confidence instead of guesswork.</p>
+          <span class="fw-badge"><span class="dot"></span>Co-developed with Circles of Hair</span>
+        </div>
+        <div class="fw-viz" aria-hidden="true">
+          <svg viewBox="0 0 340 180" role="img" aria-label="Revenue trending upward with forecast">
+            <g stroke="#ece0f7" stroke-width="1">
+              <line x1="14" y1="44" x2="326" y2="44"/>
+              <line x1="14" y1="92" x2="326" y2="92"/>
+              <line x1="14" y1="140" x2="326" y2="140"/>
+            </g>
+            <g fill="#B14EF1">
+              <rect x="26" y="118" width="30" height="42" rx="5"/>
+              <rect x="72" y="102" width="30" height="58" rx="5"/>
+              <rect x="118" y="86" width="30" height="74" rx="5"/>
+              <rect x="164" y="66" width="30" height="94" rx="5"/>
+            </g>
+            <g fill="#FFD140">
+              <rect x="210" y="50" width="30" height="110" rx="5"/>
+              <rect x="256" y="36" width="30" height="124" rx="5"/>
+              <rect x="302" y="22" width="30" height="138" rx="5"/>
+            </g>
+            <line x1="204" y1="14" x2="204" y2="160" stroke="#9DA2B3" stroke-width="1.5" stroke-dasharray="4 5"/>
+            <line x1="14" y1="160" x2="326" y2="160" stroke="#cbb8e6" stroke-width="2"/>
+          </svg>
+          <div class="cap">
+            <span class="fw-legend"><span><i style="background:#B14EF1"></i>Actual</span><span><i style="background:#FFD140"></i>Forecast</span></span>
+            <span><b>↗ revenue</b> trending up</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section id="integrations" class="section">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>Where Maruflow goes further</span>
+      <h2>Deep integration. Real growth.</h2>
+      <p>Most salon software stops at the booking. Maruflow connects every appointment to your marketing and your client's full journey.</p>
+    </div>
+
+    <div class="integ">
+      <div class="integ-card dark reveal">
+        <div class="brand-chip"><svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 106 31" role="img" aria-label="HubSpot"><g fill="none"><path d="M11.48 4.974v8.475H3.694V4.974H0v20.231h3.695v-8.2h7.784v8.2h3.696V4.974zm15.522 13.692a3.057 3.057 0 1 1-6.115 0V10h-3.505v8.666a6.556 6.556 0 0 0 13.112 0V10h-3.492v8.666zm25.971-7.773c0-1.777 1.175-2.34 2.462-2.34 1.038 0 2.408.79 3.305 1.748l2.295-2.706c-1.146-1.55-3.47-2.621-5.373-2.621-3.803 0-6.553 2.227-6.553 5.919 0 6.85 8.372 4.676 8.372 8.51 0 1.182-1.148 2.226-2.462 2.226-2.073 0-2.745-1.013-3.697-2.085l-2.548 2.649c1.63 2 3.64 3.016 6.047 3.016 3.613 0 6.519-2.254 6.519-5.778 0-7.604-8.373-5.241-8.373-8.538m51.8 11.08c-2.071 0-2.66-.896-2.66-2.268V13.63h3.22v-3.078h-3.22V6.491l-3.554 1.595V20.46c0 3.165 2.184 4.76 5.178 4.76.47.008.94-.03 1.402-.112l.867-3.192c-.391.027-.84.054-1.233.054M40.344 10.101c-1.736 0-2.948.504-4.12 1.653V5.095h-3.51v12.343c0 4.62 3.34 7.786 7.094 7.786 4.164 0 7.827-3.222 7.827-7.56 0-4.284-3.371-7.56-7.291-7.56m-.022 11.587a3.983 3.983 0 1 1 0-7.967 3.983 3.983 0 0 1 0 7.967m38.142-4.211c0-4.346-3.655-7.56-7.827-7.56-3.753 0-7.094 3.165-7.094 7.786v12.35h3.51v-6.668c1.17 1.147 2.384 1.653 4.118 1.653 3.92 0 7.292-3.276 7.292-7.561m-3.323-.044a3.983 3.983 0 1 1-7.967 0 3.983 3.983 0 0 1 7.967 0" fill="#33475B"/><path d="M89.806 9.75V6.223a2.716 2.716 0 0 0 1.566-2.448v-.081c0-1.5-1.216-2.716-2.716-2.716h-.081a2.716 2.716 0 0 0-2.716 2.716v.081a2.716 2.716 0 0 0 1.566 2.448V9.75a7.691 7.691 0 0 0-3.657 1.61l-9.673-7.534c.069-.249.105-.505.109-.762a3.06 3.06 0 1 0-3.064 3.054 3.027 3.027 0 0 0 1.507-.41l9.525 7.412a7.715 7.715 0 0 0 .118 8.69l-2.897 2.898a2.488 2.488 0 0 0-.724-.118 2.513 2.513 0 1 0 2.515 2.515 2.48 2.48 0 0 0-.118-.724l2.866-2.867A7.728 7.728 0 1 0 89.806 9.75m-1.188 11.6a3.965 3.965 0 1 1 0-7.927 3.965 3.965 0 0 1 .004 7.925" fill="#FF7A59"/></g></svg></div>
+        <span class="tag">Deep integration</span>
+        <h3>End-to-end client journey tracking</h3>
+        <p>Maruflow plugs straight into HubSpot so you get accurate, end-to-end tracking of every client's journey — from first click to loyal regular.</p>
+        <div class="journey">
+          <span class="step">Discover</span><span class="arr">→</span>
+          <span class="step">Book</span><span class="arr">→</span>
+          <span class="step">Visit</span><span class="arr">→</span>
+          <span class="step">Follow-up</span><span class="arr">→</span>
+          <span class="step">Rebook</span>
+        </div>
+        <div class="integ-list">
+          <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Market to clients at key moments and opportunities</div>
+          <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Trigger automations that nurture and rebook on autopilot</div>
+          <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Step in with manual interventions exactly when it matters</div>
+        </div>
+      </div>
+
+      <div class="integ-card reveal">
+        <div class="brand-chip zap-chip"><span class="zap-bar" aria-hidden="true"></span><span class="zap-word" role="img" aria-label="Zapier">zapier</span></div>
