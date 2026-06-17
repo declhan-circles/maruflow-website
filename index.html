@@ -165,8 +165,8 @@ header.nav{
   background:var(--grad);box-shadow:var(--shadow-lg);overflow:hidden;
 }
 .hv-main::after{
-  content:"";position:absolute;right:-30%;bottom:-40%;width:90%;height:90%;
-  background:radial-gradient(circle, rgba(255,209,64,.5), transparent 60%);
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(440px circle at 92% 90%, rgba(255,209,64,.45), rgba(255,209,64,0) 60%);
 }
 .hv-main .emblem{position:absolute;top:22px;left:22px;width:30px;height:30px;padding:8px;background:#fff;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.2)}
 .hv-main .hv-label{position:absolute;top:30px;right:28px;color:rgba(255,255,255,.85);font-weight:700;letter-spacing:.12em;font-size:.72rem;text-transform:uppercase}
@@ -211,7 +211,7 @@ section{scroll-margin-top:90px}
   background:var(--grad);color:#fff;border-radius:var(--radius-lg);
   padding:44px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden;
 }
-.story-card::after{content:"";position:absolute;right:-20%;top:-30%;width:70%;height:70%;background:radial-gradient(circle,rgba(255,209,64,.45),transparent 60%)}
+.story-card::after{content:"";position:absolute;inset:0;background:radial-gradient(460px circle at 88% 6%, rgba(255,209,64,.5), rgba(255,209,64,0) 62%);pointer-events:none}
 .story-card .q{font-size:1.5rem;font-weight:800;line-height:1.3;letter-spacing:-.02em;position:relative}
 .story-card .by{margin-top:18px;font-weight:500;opacity:.95;font-size:1rem;line-height:1.5;position:relative}
 .story-card .sc-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;position:relative}
@@ -514,7 +514,7 @@ footer .f-tag{max-width:320px;font-size:.95rem;color:#a7a8b8}
         <p>Deposits, multi-service chains, processing time, recurring appointments and stylist-level availability — handled with ease.</p>
       </div>
 
-      <div class="feat gold reveal">
+      <div class="feat reveal">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 15 9l7 .5-5.5 4.5L18 21l-6-3.8L6 21l1.5-7L2 9.5 9 9z"/></svg></div>
         <h3>Reviews &amp; reputation</h3>
         <p>An automated review-building engine plus full reputation management — turn happy clients into a stream of 5-star reviews.</p>
