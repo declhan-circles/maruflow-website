@@ -155,8 +155,9 @@ header.nav{
 .hero-meta svg{width:18px;height:18px;color:var(--purple)}
 
 /* Hero visual */
-.hero-visual{position:relative;display:flex;align-items:center}
-.hero-device{width:100%;box-shadow:0 40px 80px -30px rgba(108,43,155,.5),0 12px 30px -14px rgba(30,30,36,.22)}
+.hero-visual{position:relative;display:flex;align-items:center;min-width:0}
+.hero-device{width:100%;min-width:0;box-shadow:0 40px 80px -30px rgba(108,43,155,.5),0 12px 30px -14px rgba(30,30,36,.22)}
+.hero-device .device-screen{min-width:0}
 .hero-visual .float-stat{z-index:4;bottom:-20px;left:-16px}
 .glass-card{
   position:absolute;background:#fff;border:1px solid var(--line);
