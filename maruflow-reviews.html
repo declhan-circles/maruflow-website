@@ -59,6 +59,12 @@ body{background:var(--bg);color:var(--ink);width:1440px;height:760px;overflow:hi
 .replybox b{color:var(--purple-deep)}
 .rbtn{background:var(--purple);color:#fff;border:none;border-radius:9px;padding:10px 18px;font-weight:700;font-size:13px;box-shadow:0 6px 14px rgba(177,78,241,.28)}
 .rbtn.ghost{background:#fff;color:var(--purple-deep);border:1px solid #e3d2f7;box-shadow:none}
+.ai-draft{border:1.5px solid #e6d2fb;background:linear-gradient(135deg,#faf4ff,#f4ecff);border-radius:12px;padding:14px 16px;margin:6px 0 14px}
+.ai-h{display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:800;color:var(--purple-deep);letter-spacing:.02em;margin-bottom:9px}
+.ai-h .spark{font-size:14px}
+.ai-tag{background:linear-gradient(135deg,var(--purple),var(--purple-deep));color:#fff;font-size:10px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.ai-body{font-size:14px;line-height:1.55;color:#3c3c46;font-style:italic;margin-bottom:13px}
+.ai-actions{display:flex;gap:9px}
 </style></head><body><div class="app">
 <aside class="sidebar"><div class="sb-logo"><svg class="emb" viewBox="0 0 579.24 372.83"><path fill="#6c2b9b" d="M489.41,372.37l-398.01.45c31.94,0,64.21-16.54,81.44-46.33l116.81-202.22,116.74,202.22c17.23,29.8,51.08,45.88,83.02,45.88"/><path fill="#ffd140" d="M536.38,358.28c-15.4,9.88-32.63,14.55-49.64,14.55-31.94,0-63.12-16.55-80.35-46.34l-116.74-202.22,68.71-101.34c21.6-31.94,69.25-30.18,88.55,3.22l119.88,207.74c24.82,42.9,11.41,97.74-30.41,124.4"/><path fill="#b14ef1" d="M289.66,124.27l-116.81,202.22c-17.23,29.8-48.33,46.34-80.28,46.34-17.01,0-34.24-4.67-49.71-14.55C1.03,331.62-12.37,276.78,12.44,233.88L132.4,26.15c19.3-33.4,66.87-35.16,88.55-3.22l68.71,101.34Z"/></svg><span class="wm">Maruflow</span></div>
 <nav class="nav">
@@ -98,14 +104,6 @@ body{background:var(--bg);color:var(--ink);width:1440px;height:760px;overflow:hi
   <div class="review">
     <div class="rmeta"><span class="gbadge">G  GOOGLE REVIEW</span><span class="rname">Hannah T.</span><span class="stars">★★★★★</span><span class="loc">Fitzgerald</span><span class="need">! NEEDS REPLY</span><span class="rdate">17 June 2026</span></div>
     <div class="rtext">My first time visiting Bloom and I must say, I am very impressed! Extremely welcoming &amp; everyone is so lovely! They have a drinks menu so I got a matcha! I had a full head of colour and it's come out beautifully. A massive thank you to Mia and Chris. My hair looks and feels amazing. Will definitely be coming back 💜</div>
-    <div class="noreply">No reply yet</div>
-    <button class="rbtn">Reply to review</button>
-  </div>
-  <div class="review">
-    <div class="rmeta"><span class="gbadge">G  GOOGLE REVIEW</span><span class="rname">James D.</span><span class="stars">★★★★★</span><span class="loc">Subiaco</span><span class="repl">✓ REPLIED</span><span class="rdate">16 June 2026</span></div>
-    <div class="rtext">Ella is absolutely amazing! Thank you so so much! 💛</div>
-    <div class="replybox"><b>Your reply:</b> Thank you for sharing your fantastic 5-star review! It absolutely makes our day to hear Ella provided such a wonderful experience for you. We truly appreciate you choosing Bloom Hair Co. and are so happy you left feeling great. Warmly, The Bloom Hair Co. team</div>
-    <button class="rbtn ghost">Edit reply</button>
-  </div>
-</div>
-</div></div></body></html>
+    <div class="ai-draft">
+      <div class="ai-h"><span class="spark">✨</span> AI-drafted reply <span class="ai-tag">Maruflow AI</span></div>
+      <div class="ai-body">"Hi Hannah, thank you so much for the wonderful review! W
