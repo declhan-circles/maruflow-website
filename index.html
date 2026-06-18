@@ -375,8 +375,24 @@ footer .f-tag{max-width:320px;font-size:.95rem;color:#a7a8b8}
   .hero-visual{min-height:300px;max-width:430px}
   .float-msg,.float-stat{display:none}
   .hero{padding:56px 0 64px}
+  .showcase-tabs{flex-wrap:wrap}
 }
-</style>
+/* PRODUCT SHOWCASE */
+.showcase-tabs{display:flex;justify-content:center;gap:10px;margin:30px auto 26px;flex-wrap:wrap}
+.showcase-tab{border:1px solid var(--line,#ECECF2);background:#fff;color:#4a4a55;font-family:inherit;font-weight:700;font-size:14.5px;padding:11px 20px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:all .18s ease}
+.showcase-tab svg{width:17px;height:17px}
+.showcase-tab:hover{border-color:#d9c4ef}
+.showcase-tab.active{background:linear-gradient(135deg,var(--purple,#B14EF1),var(--purple-deep,#6C2B9B));color:#fff;border-color:transparent;box-shadow:0 8px 20px rgba(177,78,241,.28)}
+.showcase-stage{max-width:1080px;margin:0 auto}
+.device{border-radius:16px;overflow:hidden;background:#fff;border:1px solid #e9e6f0;box-shadow:0 30px 70px -28px rgba(108,43,155,.45),0 8px 24px -12px rgba(30,30,36,.18)}
+.device-bar{height:38px;background:#f4f1f9;border-bottom:1px solid #ece8f3;display:flex;align-items:center;gap:7px;padding:0 16px}
+.device-bar i{width:11px;height:11px;border-radius:50%;background:#d6cce6;display:block}
+.device-bar .url{margin-left:14px;font-size:12px;color:#9a93a8;font-weight:600;background:#fff;border:1px solid #ece8f3;border-radius:7px;padding:4px 14px}
+.device-screen{position:relative;width:100%;overflow:hidden;background:#F7F7FB}
+.device-screen iframe{border:0;width:1440px;height:760px;transform-origin:top left;display:block;pointer-events:none}
+.device-cap{display:none;text-align:center;color:var(--muted,#6E7180);font-size:14px;margin-top:18px;line-height:1.5}
+.device-cap.active{display:block}
+.device.hidden{display:none}
 </head>
 <body>
 
@@ -559,6 +575,45 @@ footer .f-tag{max-width:320px;font-size:.95rem;color:#a7a8b8}
   </div>
 </section>
 
+<!-- PRODUCT SHOWCASE -->
+<section id="product" class="section tint">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>See it in action</span>
+      <h2>The actual platform — not a concept</h2>
+      <p>This is Maruflow running live inside <a class="lk" href="https://circlesofhair.com.au" target="_blank" rel="noopener">Circles of Hair</a> every day. Take a look around.</p>
+    </div>
+    <div class="showcase-tabs reveal">
+      <button class="showcase-tab active" data-screen="calendar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Calendar</button>
+      <button class="showcase-tab" data-screen="messages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Two-way Messages</button>
+      <button class="showcase-tab" data-screen="reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 15 9l7 .5-5.5 4.5L18 21l-6-3.8L6 21l1.5-7L2 9.5 9 9z"/></svg>Reviews</button>
+      <button class="showcase-tab" data-screen="reporting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>Future Value Report</button>
+    </div>
+    <div class="showcase-stage reveal">
+      <div class="device" data-screen="calendar">
+        <div class="device-bar"><i></i><i></i><i></i><span class="url">app.maruflow.com/calendar</span></div>
+        <div class="device-screen"><iframe src="maruflow-calendar.html" title="Maruflow calendar" scrolling="no" loading="lazy"></iframe></div>
+      </div>
+      <div class="device hidden" data-screen="messages">
+        <div class="device-bar"><i></i><i></i><i></i><span class="url">app.maruflow.com/messages</span></div>
+        <div class="device-screen"><iframe src="maruflow-messages.html" title="Maruflow messages" scrolling="no" loading="lazy"></iframe></div>
+      </div>
+      <div class="device hidden" data-screen="reviews">
+        <div class="device-bar"><i></i><i></i><i></i><span class="url">app.maruflow.com/reviews</span></div>
+        <div class="device-screen"><iframe src="maruflow-reviews.html" title="Maruflow reviews" scrolling="no" loading="lazy"></iframe></div>
+      </div>
+      <div class="device hidden" data-screen="reporting">
+        <div class="device-bar"><i></i><i></i><i></i><span class="url">app.maruflow.com/reports</span></div>
+        <div class="device-screen"><iframe src="maruflow-reporting.html" title="Maruflow future value report" scrolling="no" loading="lazy"></iframe></div>
+      </div>
+      <p class="device-cap active" data-screen="calendar">A live day at the salon — every stylist, every chair, colour-coded at a glance.</p>
+      <p class="device-cap" data-screen="messages">Real two-way SMS &amp; chat with clients — reschedules, reminders and confirmations, all in one thread.</p>
+      <p class="device-cap" data-screen="reviews">Collect, monitor and reply to Google reviews and private feedback across every location.</p>
+      <p class="device-cap" data-screen="reporting">Advanced reporting built with Circles of Hair — forecast revenue and spot at-risk clients before they lapse.</p>
+    </div>
+  </div>
+</section>
+
 <!-- INTEGRATIONS -->
 <section id="integrations" class="section">
   <div class="container">
@@ -734,6 +789,31 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
 }, { threshold: .12 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ---- Product showcase: scale mockup frames to fit + tab switching ---- */
+function scaleDevices(){
+  document.querySelectorAll('.device-screen').forEach(screen => {
+    const iframe = screen.querySelector('iframe');
+    if(!iframe) return;
+    const w = screen.clientWidth;
+    if(!w) return;
+    const scale = w / 1440;
+    iframe.style.transform = 'scale(' + scale + ')';
+    screen.style.height = (760 * scale) + 'px';
+  });
+}
+window.addEventListener('resize', scaleDevices);
+window.addEventListener('load', scaleDevices);
+scaleDevices();
+document.querySelectorAll('.showcase-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const key = tab.getAttribute('data-screen');
+    document.querySelectorAll('.showcase-tab').forEach(t => t.classList.toggle('active', t === tab));
+    document.querySelectorAll('.device').forEach(d => d.classList.toggle('hidden', d.getAttribute('data-screen') !== key));
+    document.querySelectorAll('.device-cap').forEach(c => c.classList.toggle('active', c.getAttribute('data-screen') === key));
+    scaleDevices();
+  });
+});
 
 /* ---- Form handling ---- */
 const form = document.getElementById('earlyForm');

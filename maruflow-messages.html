@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>Maruflow — Messages</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--purple:#B14EF1;--purple-deep:#6C2B9B;--gold:#FFD140;--ink:#1E1E24;--muted:#6E7180;--line:#ECECF2;--bg:#F7F7FB;}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Manrope',system-ui,sans-serif}
+body{background:var(--bg);color:var(--ink);width:1440px;height:760px;overflow:hidden}
+.app{display:flex;height:760px}
+.sidebar{width:212px;background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;flex:none}
+.sb-logo{display:flex;align-items:center;gap:10px;padding:18px 18px 16px}
+.sb-logo .emb{width:28px;height:28px;flex:none}.sb-logo .wm{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.nav{padding:6px 12px;display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;color:#4a4a55;font-weight:600;font-size:14.5px;position:relative}
+.nav a svg.ic{width:19px;height:19px;flex:none;stroke:#7a7a86;stroke-width:1.8;fill:none}
+.nav a.active{background:linear-gradient(135deg,#f3e7ff,#efe0ff);color:var(--purple-deep)}.nav a.active svg.ic{stroke:var(--purple-deep)}
+.nav a.active::before{content:"";position:absolute;left:-12px;top:8px;bottom:8px;width:3px;border-radius:0 3px 3px 0;background:var(--purple)}
+.main{flex:1;display:flex;flex-direction:column;min-width:0}
+.topbar{height:56px;border-bottom:1px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:flex-end;padding:0 20px;gap:14px}
+.user{text-align:right;line-height:1.15}.user .n{font-weight:700;font-size:13.5px}.user .r{font-size:11.5px;color:var(--muted)}
+.user-av{width:34px;height:34px;border-radius:50%;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:6px}
+.msgwrap{flex:1;display:flex;min-height:0}
+.chatlist{width:352px;flex:none;border-right:1px solid var(--line);background:#fff;display:flex;flex-direction:column}
+.cl-search{margin:16px;border:1px solid var(--line);border-radius:10px;padding:11px 14px;font-size:14px;color:var(--muted);display:flex;align-items:center;gap:10px}
+.cl-head{display:flex;align-items:center;gap:8px;padding:2px 16px 10px}.cl-head h2{font-size:19px;font-weight:800;flex:1}
+.chip{font-size:12.5px;font-weight:700;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:5px 13px}
+.chip.on{background:var(--purple);color:#fff;border-color:var(--purple)}
+.chats{overflow:hidden;flex:1}
+.chat{display:flex;gap:11px;align-items:flex-start;padding:11px 16px;border-bottom:1px solid #f4f4f8;position:relative}
+.chat.active{background:#f6ecff}.chat.active::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--purple)}
+.ava{width:38px;height:38px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff}
+.chat .cmid{flex:1;min-width:0}.chat .cn{font-size:14px;font-weight:700}.chat .cp{font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.chat .cr{text-align:right;flex:none}.chat .cd{font-size:11.5px;color:#9a9aa6}.chat .ct{font-size:11.5px;color:#9a9aa6;margin-top:14px}
+.chat.active .cn,.chat.active .cd{color:var(--purple-deep)}
+.conv{flex:1;display:flex;flex-direction:column;min-width:0;background:#fcfbfe}
+.conv-head{height:70px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:0 22px;background:#fff}
+.conv-head .ava{width:40px;height:40px;background:#f3e7ff;color:var(--purple-deep)}
+.conv-head .ci .n{font-weight:800;font-size:16px}.conv-head .ci .e{font-size:12.5px;color:var(--muted)}
+.conv-head .cmeta{margin-left:auto;text-align:right}.conv-head .cmeta .p{font-weight:700;font-size:14px}.conv-head .cmeta .lm{font-size:11.5px;color:var(--muted);margin-top:2px}
+.thread{flex:1;overflow:hidden;padding:18px 24px;display:flex;flex-direction:column;gap:13px;justify-content:flex-end}
+.divider{align-self:center;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:12px;color:var(--muted);font-weight:600}
+.row{display:flex;align-items:flex-end;gap:9px}
+.row.out{flex-direction:row-reverse}
+.bub{max-width:60%;border-radius:16px;padding:12px 16px;font-size:13.5px;line-height:1.5}
+.row.out .bub{background:linear-gradient(135deg,#b14ef1,#9b3fe0);color:#fff;border-radius:16px 16px 4px 16px;box-shadow:0 6px 18px rgba(177,78,241,.22)}
+.row.in .bub{background:#fff;border:1px solid var(--line);color:var(--ink);border-radius:16px 16px 16px 4px;box-shadow:0 3px 10px rgba(30,30,36,.05)}
+.bub a{color:inherit;text-decoration:underline;word-break:break-all}
+.bub .stamp{display:block;text-align:right;font-size:10.5px;margin-top:7px}
+.row.out .stamp{opacity:.75}.row.in .stamp{color:#a3a3ad}
+.bav{width:30px;height:30px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center}
+.bav.salon{background:#fff;border:1px solid var(--line);padding:5px}
+.bav.client{background:#f6d36b;color:#5a4a00;font-size:11px;font-weight:800}
+.composer{border-top:1px solid var(--line);background:#fff;padding:14px 22px;display:flex;gap:12px;align-items:center}
+.composer .field{flex:1;border:1px solid var(--line);border-radius:10px;padding:12px 16px;color:var(--muted);font-size:14px}
+.sendbtn{background:var(--purple);color:#fff;border:none;border-radius:10px;padding:12px 26px;font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px;box-shadow:0 6px 16px rgba(177,78,241,.3)}
+</style></head><body><div class="app">
+<aside class="sidebar"><div class="sb-logo"><svg class="emb" viewBox="0 0 579.24 372.83"><path fill="#6c2b9b" d="M489.41,372.37l-398.01.45c31.94,0,64.21-16.54,81.44-46.33l116.81-202.22,116.74,202.22c17.23,29.8,51.08,45.88,83.02,45.88"/><path fill="#ffd140" d="M536.38,358.28c-15.4,9.88-32.63,14.55-49.64,14.55-31.94,0-63.12-16.55-80.35-46.34l-116.74-202.22,68.71-101.34c21.6-31.94,69.25-30.18,88.55,3.22l119.88,207.74c24.82,42.9,11.41,97.74-30.41,124.4"/><path fill="#b14ef1" d="M289.66,124.27l-116.81,202.22c-17.23,29.8-48.33,46.34-80.28,46.34-17.01,0-34.24-4.67-49.71-14.55C1.03,331.62-12.37,276.78,12.44,233.88L132.4,26.15c19.3-33.4,66.87-35.16,88.55-3.22l68.71,101.34Z"/></svg><span class="wm">Maruflow</span></div>
+<nav class="nav">
+<a><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>Dashboard</a>
+<a><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Calendar</a>
+<a><svg class="ic" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Customers</a>
+<a><svg class="ic" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88M14.47 14.48 20 20"/></svg>Staff</a>
+<a><svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>Quick Sale</a>
+<a><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-2.82 1.17V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15H4a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 6 9.4l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 11 4.6V4a2 2 0 0 1 4 0v.09A1.65 1.65 0 0 0 18 6l.06-.06a2 2 0 1 1 2.83 2.83L20.83 9A1.65 1.65 0 0 0 20.4 11H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>Setup</a>
+<a><svg class="ic" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Admin</a>
+<a><svg class="ic" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>Reports</a>
+<a><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Waitlist</a>
+<a class="active"><svg class="ic" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Messages</a>
+<a><svg class="ic" viewBox="0 0 24 24"><path d="M12 2 15 9l7 .5-5.5 4.5L18 21l-6-3.8L6 21l1.5-7L2 9.5 9 9z"/></svg>Reviews</a>
+</nav></aside>
+<div class="main"><div class="topbar"><div class="user"><div class="n">Maruflow Admin</div><div class="r">Super Admin</div></div><div class="user-av"><svg viewBox="0 0 579.24 372.83"><path fill="#6c2b9b" d="M489.41,372.37l-398.01.45c31.94,0,64.21-16.54,81.44-46.33l116.81-202.22,116.74,202.22c17.23,29.8,51.08,45.88,83.02,45.88"/><path fill="#ffd140" d="M536.38,358.28c-15.4,9.88-32.63,14.55-49.64,14.55-31.94,0-63.12-16.55-80.35-46.34l-116.74-202.22,68.71-101.34c21.6-31.94,69.25-30.18,88.55,3.22l119.88,207.74c24.82,42.9,11.41,97.74-30.41,124.4"/><path fill="#b14ef1" d="M289.66,124.27l-116.81,202.22c-17.23,29.8-48.33,46.34-80.28,46.34-17.01,0-34.24-4.67-49.71-14.55C1.03,331.62-12.37,276.78,12.44,233.88L132.4,26.15c19.3-33.4,66.87-35.16,88.55-3.22l68.71,101.34Z"/></svg></div><span style="color:#16a34a">🔒</span></div>
+<div class="msgwrap"><div class="chatlist"><div class="cl-search">🔍 Search customer</div><div class="cl-head"><h2>Chats</h2><span class="chip">Unread</span><span class="chip">Read</span><span class="chip on">All</span></div><div class="chats" id="chats"></div></div>
+<div class="conv"><div class="conv-head"><div class="ava">JC</div><div class="ci"><div class="n">James Carter</div><div class="e">james.carter@email.com</div></div><div class="cmeta"><div class="p">+61 412 938 540</div><div class="lm">Last message: 9:49 AM</div></div></div><div class="thread" id="thread"></div><div class="composer"><div class="field">Type a message</div><button class="sendbtn">Send ➤</button></div></div></div>
+</div></div>
+<script>
+var E="<svg viewBox='0 0 579.24 372.83'><path fill='#6c2b9b' d='M489.41,372.37l-398.01.45c31.94,0,64.21-16.54,81.44-46.33l116.81-202.22,116.74,202.22c17.23,29.8,51.08,45.88,83.02,45.88'/><path fill='#ffd140' d='M536.38,358.28c-15.4,9.88-32.63,14.55-49.64,14.55-31.94,0-63.12-16.55-80.35-46.34l-116.74-202.22,68.71-101.34c21.6-31.94,69.25-30.18,88.55,3.22l119.88,207.74c24.82,42.9,11.41,97.74-30.41,124.4'/><path fill='#b14ef1' d='M289.66,124.27l-116.81,202.22c-17.23,29.8-48.33,46.34-80.28,46.34-17.01,0-34.24-4.67-49.71-14.55C1.03,331.62-12.37,276.78,12.44,233.88L132.4,26.15c19.3-33.4,66.87-35.16,88.55-3.22l68.71,101.34Z'/></svg>";
+var chats=[["AS","Amelia Stone","You: All confirmed — see you …","17/06/26","04:46 PM","#f6d36b",0],["JC","James Carter","Amazing, thanks so much! 🙌","17/06/26","09:49 AM","#f6d36b",1],["OJ","Oliver Jade","Perfect, see you then 👍","16/06/26","01:36 PM","#9ad0c2",0],["PN","Priya Nair","You: Booked you in for Friday!","03/06/26","12:00 PM","#c3a6f0",0],["SM","Sophie Marsh","Can I add a treatment too?","30/04/26","02:12 PM","#f3b6d3",0],["TT","Thomas Tran","Thanks, that works great","28/04/26","09:52 AM","#c3a6f0",0],["DL","Daniel Lowe","You: No worries at all 😊","07/04/26","10:09 AM","#a8d5a2",0],["HL","Hannah Liu","See you Saturday!","07/04/26","10:09 AM","#a8d5a2",0],["HP","Harper Price","You: Reminder sent ✅","03/04/26","02:51 PM","#bcd3f5",0],["OK","Olivia Khan","Yes please, 2pm works","03/04/26","01:58 PM","#c3a6f0",0],["KK","Katie Kerr","You: Anytime! 💜","18/03/26","09:40 AM","#cfc3f0",0]];
+var ce=document.getElementById("chats");chats.forEach(function(c){ce.innerHTML+='<div class="chat'+(c[6]?" active":"")+'"><div class="ava" style="background:'+c[5]+'">'+c[0]+'</div><div class="cmid"><div class="cn">'+c[1]+'</div><div class="cp">'+c[2]+'</div></div><div class="cr"><div class="cd">'+c[3]+'</div><div class="ct">'+c[4]+'</div></div></div>';});
+var msgs=[
+{d:1,t:"Today"},
+{in:1,b:"Hi! Any chance I could move my Friday colour appointment? Something came up at work 😊",s:"9:42 AM"},
+{in:0,b:"Hi James! No problem at all 💜 We've got 2:30pm or 4:00pm free this Friday with Mia — would either suit?",s:"9:45 AM"},
+{in:1,b:"2:30pm would be perfect, thank you!",s:"9:47 AM"},
+{in:0,b:"Done ✅ You're booked with Mia at 2:30pm, Fri 19 June. We'll text you a reminder the day before.",s:"9:48 AM"},
+{in:1,b:"Amazing, thanks so much! 🙌",s:"9:49 AM"}
+];
+var te=document.getElementById("thread");
+msgs.forEach(function(m){
+ if(m.d){te.innerHTML+='<div class="divider">'+m.t+'</div>';return;}
+ var av=m.in?'<div class="bav client">JC</div>':'<div class="bav salon">'+E+'</div>';
+ te.innerHTML+='<div class="row '+(m.in?'in':'out')+'">'+av+'<div class="bub">'+m.b+'<span class="stamp">'+m.s+'</span></div></div>';
+});
+</script>
+</body></html>
